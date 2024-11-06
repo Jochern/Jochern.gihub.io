@@ -71,7 +71,7 @@ addUserForm.addEventListener('submit', async (event) => {
 
   try {
     const response = await fetch(
-      'https://[your-supabase-url]/functions/v1/manageUsers',
+      'https://xnqiewcxmqeibmslyhmc.supabase.co/auth/v1/manageUsers',
       {
         method: 'POST',
         headers: {
