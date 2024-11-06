@@ -18,49 +18,45 @@ function showLogin() {
   dashboardContainer.style.display = 'none';
 }
 
-// Login form submission
-addUserForm.addEventListener('submit', async (event) => {
+loginForm.addEventListener('submit', async (event) => {
   event.preventDefault();
 
-  const email = document.getElementById('new-user-email').value;
-  const password = document.getElementById('new-user-password').value;
-  const role = document.getElementById('new-user-role').value;
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
 
   // Construct the payload object
   const payload = {
-    action: 'create',
     email: email,
-    password: password,
-    profileData: { role: role }
+    password: password
   };
 
   // Log payload to verify JSON structure before sending
-  console.log("Payload:", payload);
+  console.log("Login Payload:", payload);
 
   try {
     const response = await fetch(
-      'https://[your-supabase-url]/functions/v1/manageUsers',
+      'https://xnqiewcxmqeibmslyhmc.supabase.co/auth/v1/token?grant_type=password',
       {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${authToken}`
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload) // Ensure payload is stringified correctly
       }
     );
+
     const data = await response.json();
-    if (data.error) {
-      alert('Error adding user');
+
+    if (data.access_token) {
+      authToken = data.access_token;
+      showDashboard();
     } else {
-      alert('User added successfully');
-      addUserForm.reset();
+      alert('Invalid login credentials.');
     }
   } catch (error) {
-    console.error('Error adding user:', error);
-    alert('Failed to add user.');
+    console.error('Login error:', error);
+    alert('Login failed.');
   }
 });
+
 
 // Add user form submission
 addUserForm.addEventListener('submit', async (event) => {
@@ -72,7 +68,7 @@ addUserForm.addEventListener('submit', async (event) => {
 
   try {
     const response = await fetch(
-      'https://xnqiewcxmqeibmslyhmc.supabase.co/auth/v1/token?grant_type=password',
+      'https://[your-supabase-url]/functions/v1/manageUsers',
       {
         method: 'POST',
         headers: {
@@ -99,13 +95,6 @@ addUserForm.addEventListener('submit', async (event) => {
     alert('Failed to add user.');
   }
 });
-
-// Logout button
-logoutButton.addEventListener('click', () => {
-  authToken = null;
-  showLogin();
-});
-
 // Initial check for token
 if (authToken) {
   showDashboard();
