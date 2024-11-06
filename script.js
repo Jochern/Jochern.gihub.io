@@ -19,34 +19,46 @@ function showLogin() {
 }
 
 // Login form submission
-loginForm.addEventListener('submit', async (event) => {
+addUserForm.addEventListener('submit', async (event) => {
   event.preventDefault();
 
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
+  const email = document.getElementById('new-user-email').value;
+  const password = document.getElementById('new-user-password').value;
+  const role = document.getElementById('new-user-role').value;
+
+  // Construct the payload object
+  const payload = {
+    action: 'create',
+    email: email,
+    password: password,
+    profileData: { role: role }
+  };
+
+  // Log payload to verify JSON structure before sending
+  console.log("Payload:", payload);
 
   try {
     const response = await fetch(
-      'https://xnqiewcxmqeibmslyhmc.supabase.co/auth/v1/token?grant_type=password',
+      'https://[your-supabase-url]/functions/v1/manageUsers',
       {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-        "email": email,
-        "password": password
-        })
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${authToken}`
+        },
+        body: JSON.stringify(payload) // Ensure payload is stringified correctly
       }
     );
     const data = await response.json();
-    if (data.access_token) {
-      authToken = data.access_token;
-      showDashboard();
+    if (data.error) {
+      alert('Error adding user');
     } else {
-      alert('Invalid login credentials.');
+      alert('User added successfully');
+      addUserForm.reset();
     }
   } catch (error) {
-    console.error('Login error:', error);
-    alert('Login failed.');
+    console.error('Error adding user:', error);
+    alert('Failed to add user.');
   }
 });
 
