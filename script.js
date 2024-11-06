@@ -60,33 +60,55 @@ loginForm.addEventListener('submit', async (event) => {
   }
 });
 
-
-// Add user form submission
 addUserForm.addEventListener('submit', async (event) => {
   event.preventDefault();
 
   const email = document.getElementById('new-user-email').value;
   const password = document.getElementById('new-user-password').value;
   const role = document.getElementById('new-user-role').value;
+  const name = document.getElementById('new-user-name').value;
+  const schoolId = parseInt(document.getElementById('new-user-school-id').value, 10);
+
+  // Construct the payload with all required fields
+  const payload = {
+    action: 'create',
+    email: email,
+    password: password,
+    profileData: {
+      name: name,
+      role: role,
+      school_id: schoolId
+    }
+  };
+
+  console.log("Add User Payload:", payload);
 
   try {
     const response = await fetch(
-      'https://xnqiewcxmqeibmslyhmc.supabase.co/auth/v1/manageUsers',
+      'https://xnqiewcxmqeibmslyhmc.supabase.co/functions/v1/manageUsers',
       {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${authToken}`
+          'Authorization': `Bearer ${authToken}`,
+          'apikey': '[your-api-key]' // Add your Supabase API key here
         },
-        body: JSON.stringify({
-          action: 'create',
-          email: email,
-          password: password,
-          profileData: { role: role }
-        })
+        body: JSON.stringify(payload)
       }
     );
+
+    console.log("Add User Raw Response:", response);
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error("Error response from Supabase:", errorText);
+      alert(`Failed to add user: ${errorText}`);
+      return;
+    }
+
     const data = await response.json();
+    console.log("Add User Response Data:", data);
+
     if (data.error) {
       alert('Error adding user');
     } else {
@@ -98,9 +120,3 @@ addUserForm.addEventListener('submit', async (event) => {
     alert('Failed to add user.');
   }
 });
-// Initial check for token
-if (authToken) {
-  showDashboard();
-} else {
-  showLogin();
-}
