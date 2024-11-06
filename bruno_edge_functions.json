@@ -1,0 +1,157 @@
+{
+  "name": "Meine_SMV",
+  "version": "1",
+  "items": [
+    {
+      "type": "http",
+      "name": "Add User",
+      "seq": 4,
+      "request": {
+        "url": "https://xnqiewcxmqeibmslyhmc.supabase.co/functions/v1/manageUsers",
+        "method": "POST",
+        "headers": [
+          {
+            "name": "Content-Type",
+            "value": "application/json",
+            "enabled": true
+          }
+        ],
+        "params": [],
+        "body": {
+          "mode": "json",
+          "json": "{\n  \"action\": \"create\",\n  \"email\": \"newusers@example.com\",\n  \"password\": \"password123\",\n  \"profileData\": {\n    \"name\": \"New User\",\n    \"role\": \"manager\",\n    \"school_id\": 1\n  }\n}\n",
+          "formUrlEncoded": [],
+          "multipartForm": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "auth": {
+          "mode": "bearer",
+          "bearer": {
+            "token": "eyJhbGciOiJIUzI1NiIsImtpZCI6InFCWXVPWlRNUWswTUVuZXQiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3hucWlld2N4bXFlaWJtc2x5aG1jLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1NGRlNTdiNy0wY2QyLTQyZGYtODI4My1kNGI3NzY3MDg4ZTMiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzI2OTQ0MjkxLCJpYXQiOjE3MjY5NDA2OTEsImVtYWlsIjoiam9oYW5uZXMxQDEucGljIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJlbWFpbCIsInByb3ZpZGVycyI6WyJlbWFpbCJdfSwidXNlcl9tZXRhZGF0YSI6e30sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoicGFzc3dvcmQiLCJ0aW1lc3RhbXAiOjE3MjY5NDA2OTF9XSwic2Vzc2lvbl9pZCI6IjBiNTNjNWExLWQ0ZGQtNGZiMy04ZGI0LTU1YmFiZjY0ZjViZSIsImlzX2Fub255bW91cyI6ZmFsc2V9.rljqJJM_hWbKavfSnUkcwS_BykV1Jgndan8Q5tbitVo"
+          }
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "Delete User",
+      "seq": 4,
+      "request": {
+        "url": "https://xnqiewcxmqeibmslyhmc.supabase.co/functions/v1/manageUsers",
+        "method": "POST",
+        "headers": [
+          {
+            "name": "Content-Type",
+            "value": "application/json",
+            "enabled": true
+          }
+        ],
+        "params": [],
+        "body": {
+          "mode": "json",
+          "json": "{ \n  \"action\": \"delete\", \n  \"userId\": \"50654722-bbd5-4110-bd92-0ccc31b5afbe\"\n}",
+          "formUrlEncoded": [],
+          "multipartForm": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "auth": {
+          "mode": "bearer",
+          "bearer": {
+            "token": "eyJhbGciOiJIUzI1NiIsImtpZCI6InFCWXVPWlRNUWswTUVuZXQiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3hucWlld2N4bXFlaWJtc2x5aG1jLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1NGRlNTdiNy0wY2QyLTQyZGYtODI4My1kNGI3NzY3MDg4ZTMiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzI2OTQ0MjkxLCJpYXQiOjE3MjY5NDA2OTEsImVtYWlsIjoiam9oYW5uZXMxQDEucGljIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJlbWFpbCIsInByb3ZpZGVycyI6WyJlbWFpbCJdfSwidXNlcl9tZXRhZGF0YSI6e30sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoicGFzc3dvcmQiLCJ0aW1lc3RhbXAiOjE3MjY5NDA2OTF9XSwic2Vzc2lvbl9pZCI6IjBiNTNjNWExLWQ0ZGQtNGZiMy04ZGI0LTU1YmFiZjY0ZjViZSIsImlzX2Fub255bW91cyI6ZmFsc2V9.rljqJJM_hWbKavfSnUkcwS_BykV1Jgndan8Q5tbitVo"
+          }
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "Update User",
+      "seq": 5,
+      "request": {
+        "url": "https://xnqiewcxmqeibmslyhmc.supabase.co/functions/v1/manageUsers",
+        "method": "POST",
+        "headers": [
+          {
+            "name": "Content-Type",
+            "value": "application/json",
+            "enabled": true
+          }
+        ],
+        "params": [],
+        "body": {
+          "mode": "json",
+          "json": "{\n  \"action\": \"update\",\n  \"userId\": \"bf13d9d7-4435-4bda-be97-826b4a0e3199\",\n  \"updates\": {\n    \"email\": \"updatedemail@example.com\",\n    \"password\": \"newpassword\"\n  },\n  \"profileData\": {\n    \"name\": \"Updated User\",\n    \"role\": \"admin\"\n  }\n}",
+          "formUrlEncoded": [],
+          "multipartForm": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "auth": {
+          "mode": "bearer",
+          "bearer": {
+            "token": "eyJhbGciOiJIUzI1NiIsImtpZCI6InFCWXVPWlRNUWswTUVuZXQiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3hucWlld2N4bXFlaWJtc2x5aG1jLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1NGRlNTdiNy0wY2QyLTQyZGYtODI4My1kNGI3NzY3MDg4ZTMiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzI2OTUzMzg3LCJpYXQiOjE3MjY5NDk3ODcsImVtYWlsIjoiam9oYW5uZXMxQDEucGljIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJlbWFpbCIsInByb3ZpZGVycyI6WyJlbWFpbCJdfSwidXNlcl9tZXRhZGF0YSI6e30sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoicGFzc3dvcmQiLCJ0aW1lc3RhbXAiOjE3MjY5NDk3ODd9XSwic2Vzc2lvbl9pZCI6Ijc1ZmE1NmZlLTE5YWItNDg5OC1iYTJkLTM0NmVlMzFiOGYyYiIsImlzX2Fub255bW91cyI6ZmFsc2V9.M5WCD0LK0BZ3H386S3InKEKKED28W8e0IUl6FBigiSs"
+          }
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "get Token for Auth",
+      "seq": 4,
+      "request": {
+        "url": "https://xnqiewcxmqeibmslyhmc.supabase.co/auth/v1/token?grant_type=password",
+        "method": "POST",
+        "headers": [
+          {
+            "name": "apikey",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhucWlld2N4bXFlaWJtc2x5aG1jIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDc3NjYzMjcsImV4cCI6MjAyMzM0MjMyN30.rVuxr93dRaqr2rRBqhtG7-8cOdloSRQ45RAXFrYBsCc",
+            "enabled": true
+          },
+          {
+            "name": "Content-Type",
+            "value": "application/json",
+            "enabled": true
+          }
+        ],
+        "params": [
+          {
+            "name": "grant_type",
+            "value": "password",
+            "type": "query",
+            "enabled": true
+          }
+        ],
+        "body": {
+          "mode": "json",
+          "json": "{\n  \"email\": \"johannes1@1.pic\",\n  \"password\": \"123\"\n}",
+          "formUrlEncoded": [],
+          "multipartForm": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "auth": {
+          "mode": "none"
+        }
+      }
+    }
+  ],
+  "environments": [],
+  "brunoConfig": {
+    "version": "1",
+    "name": "Meine_SMV",
+    "type": "collection",
+    "ignore": [
+      "node_modules",
+      ".git"
+    ]
+  }
+}
