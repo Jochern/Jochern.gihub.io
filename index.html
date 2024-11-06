@@ -23,12 +23,15 @@
     <form id="add-user-form">
       <input type="email" id="new-user-email" placeholder="User Email" required />
       <input type="password" id="new-user-password" placeholder="User Password" required />
-      <select id="new-user-role">
-        <option value="user">User</option>
-        <option value="admin">Admin</option>
-      </select>
-      <button type="submit">Add User</button>
-    </form>
+      <input type="text" id="new-user-name" placeholder="User Name" required />
+        <select id="new-user-role">
+          <option value="user">User</option>
+          <option value="manager">Manager</option>
+          <option value="admin">Admin</option>
+        </select>
+      <input type="number" id="new-user-school-id" placeholder="School ID" required />
+    <button type="submit">Add User</button>
+  </form>
   </div>
 
   <script src="script.js"></script>
