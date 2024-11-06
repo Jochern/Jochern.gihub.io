@@ -26,8 +26,8 @@ loginForm.addEventListener('submit', async (event) => {
 
   // Construct the payload object
   const payload = {
-    email: email,
-    password: password
+    "email": email,
+    "password": password
   };
 
   // Log payload to verify JSON structure before sending
@@ -38,9 +38,10 @@ loginForm.addEventListener('submit', async (event) => {
       'https://xnqiewcxmqeibmslyhmc.supabase.co/auth/v1/token?grant_type=password',
       {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' ,
-                 'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhucWlld2N4bXFlaWJtc2x5aG1jIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDc3NjYzMjcsImV4cCI6MjAyMzM0MjMyN30.rVuxr93dRaqr2rRBqhtG7-8cOdloSRQ45RAXFrYBsCc' // Add the Supabase API key here
-                   },
+        headers: { 
+          'Content-Type': 'application/json' ,
+          'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhucWlld2N4bXFlaWJtc2x5aG1jIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDc3NjYzMjcsImV4cCI6MjAyMzM0MjMyN30.rVuxr93dRaqr2rRBqhtG7-8cOdloSRQ45RAXFrYBsCc'
+          },
         body: JSON.stringify(payload) // Ensure payload is stringified correctly
       }
     );
