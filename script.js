@@ -27,7 +27,7 @@ loginForm.addEventListener('submit', async (event) => {
 
   try {
     const response = await fetch(
-      'https://[your-supabase-url]/auth/v1/token?grant_type=password',
+      'https://xnqiewcxmqeibmslyhmc.supabase.co/auth/v1/token?grant_type=password',
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
